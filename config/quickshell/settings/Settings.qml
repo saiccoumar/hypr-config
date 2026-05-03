@@ -47,18 +47,6 @@ QtObject {
     // Largeur du player en pixels (scalée automatiquement)
     readonly property int playerWidth: s(320)
 
-
-    // ── COMPANIONS ──────────────────────────────────────────────
-
-    readonly property bool companionsEnabled: true  // Afficher les compagnons
-
-    // Distance du bord droit en pixels
-    readonly property int companionsMarginRight: s(20)
-
-    // Taille des sprites
-    readonly property int companionsSpriteSize: s(128)
-
-
     // ── COULEURS GLOBALES ────────────────────────────────────────
 
     // Palette sépia NieR (ne pas modifier sauf si tu changes de thème)
