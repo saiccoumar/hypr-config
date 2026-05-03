@@ -293,7 +293,7 @@ Item {
 
                                 Rectangle {
                                     anchors.fill:parent
-                                    color: parent.isActive ? root.ink : (catMA.containsMouse ? Qt.rgba(70/255,63/255,46/255,0.07) : "transparent")
+                                    color: parent.isActive ? root.ink : (catMA.containsMouse ? Qt.rgba(70/255,70/255,70/255,0.07) : "transparent")
                                     Behavior on color { ColorAnimation { duration:150 } }
                                 }
                                 Row {

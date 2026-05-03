@@ -56,10 +56,10 @@ SPRING_D = 0.62     # amortissement
 WAVE_SPEED = 7.2    # vitesse de propagation (cellules/frame à 60fps de réf)
 
 # Couleur de fond (bg sombre du lockscreen)
-BG_R, BG_G, BG_B = 11, 9, 6  # #0b0906
+BG_R, BG_G, BG_B = 11, 10, 9  # #0b0a09
 
-# Palette sépia : le pixel atteint (R, G, B) × (luminosité × progress)
-SEPIA_R, SEPIA_G, SEPIA_B = 230, 215, 180
+# Palette monochrome : le pixel atteint (R, G, B) × (luminosité × progress)
+SEPIA_R, SEPIA_G, SEPIA_B = 200, 200, 200
 
 
 # ═══════════════════════════════════════════════════════════════

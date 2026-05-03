@@ -21,12 +21,12 @@ ShellRoot {
     property string arrowPng:      "file://" + assetsDir + "/nier-arrow.png"
 
     // ── Palette NieR ──
-    readonly property color colCard:     "#e8e0c8"
-    readonly property color colCardSoft: Qt.rgba(232/255, 224/255, 200/255, 0.4)
-    readonly property color colInk:      "#3a342a"
-    readonly property color colInkSoft:  "#6a604a"
-    readonly property color colHi:       "#1f1c16"
-    readonly property color colLight:    "#f5edd5"
+    readonly property color colCard:     "#d0d0d0"
+    readonly property color colCardSoft: Qt.rgba(208/255, 208/255, 208/255, 0.4)
+    readonly property color colInk:      "#4a4a4a"
+    readonly property color colInkSoft:  "#7a7a7a"
+    readonly property color colHi:       "#1f1f1f"
+    readonly property color colLight:    "#e6e6e6"
 
     // ── Layout ──
     readonly property int  slotGapV: 200
@@ -1181,7 +1181,7 @@ ShellRoot {
                             text: root.wifiError
                             font.family: "Inter"
                             font.pixelSize: 10
-                            color: "#a04030"
+                            color: "#6e6e6e"
                         }
 
                         // Boutons Connect / Cancel
