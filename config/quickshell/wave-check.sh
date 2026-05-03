@@ -53,45 +53,34 @@ if (( ${#missing_scripts[@]} > 0 )); then
     exit 1
 fi
 
-# ── Vérif et génération reveal ──
+# ── Génération (force) reveal ──
+echo "↻ génération wave_reveal.mp4…"
+python "$REVEAL_SCRIPT" -o "$REVEAL_VIDEO"
 if [[ -f "$REVEAL_VIDEO" ]]; then
-    echo "✓ wave_reveal.mp4 présent"
+    echo "✓ wave_reveal.mp4 généré"
 else
-    echo "⚠ wave_reveal.mp4 manquant — génération…"
-    python "$REVEAL_SCRIPT" -o "$REVEAL_VIDEO"
-    if [[ -f "$REVEAL_VIDEO" ]]; then
-        echo "✓ wave_reveal.mp4 généré"
-    else
-        echo "❌ échec génération wave_reveal.mp4"
-        exit 2
-    fi
+    echo "❌ échec génération wave_reveal.mp4"
+    exit 2
 fi
 
-# ── Vérif et génération hide ──
+# ── Génération (force) hide ──
+echo "↻ génération wave_hide.mp4…"
+python "$HIDE_SCRIPT" -o "$HIDE_VIDEO"
 if [[ -f "$HIDE_VIDEO" ]]; then
-    echo "✓ wave_hide.mp4 présent"
+    echo "✓ wave_hide.mp4 généré"
 else
-    echo "⚠ wave_hide.mp4 manquant — génération…"
-    python "$HIDE_SCRIPT" -o "$HIDE_VIDEO"
-    if [[ -f "$HIDE_VIDEO" ]]; then
-        echo "✓ wave_hide.mp4 généré"
-    else
-        echo "❌ échec génération wave_hide.mp4"
-        exit 3
-    fi
+    echo "❌ échec génération wave_hide.mp4"
+    exit 3
 fi
 
+# ── Génération (force) last frame ──
+echo "↻ génération wave_last_frame.png…"
+python "$LAST_FRAME_SCRIPT" "$REVEAL_VIDEO"
 if [[ -f "$LAST_FRAME" ]]; then
-    echo "✓ wave_last_frame.png présent"
+    echo "✓ wave_last_frame.png généré"
 else
-    echo "⚠ wave_last_frame.png manquant — génération…"
-    python "$LAST_FRAME_SCRIPT" "$REVEAL_VIDEO"
-    if [[ -f "$LAST_FRAME" ]]; then
-        echo "✓ wave_last_frame.png généré"
-    else
-        echo "❌ échec génération wave_last_frame.png"
-        exit 4
-    fi
+    echo "❌ échec génération wave_last_frame.png"
+    exit 4
 fi
 
 echo "═══════════════════════════════════════════════════════════"
