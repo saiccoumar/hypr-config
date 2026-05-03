@@ -76,6 +76,26 @@ copy_configs() {
     fi
 }
 
+install_pam_files() {
+    for source_file in "$SCRIPT_DIR/config/system/pam.d/"*; do
+        if [[ ! -f "$source_file" ]]; then
+            continue
+        fi
+
+        name="$(basename "$source_file")"
+        target_file="/etc/pam.d/$name"
+
+        if [[ -f "$target_file" ]]; then
+            echo "Backing up $target_file to $BACKUP_DIR/$name.pam"
+            mkdir -p "$BACKUP_DIR"
+            cp -a "$target_file" "$BACKUP_DIR/$name.pam"
+        fi
+
+        echo "Installing PAM file: $target_file"
+        sudo install -D -m 644 "$source_file" "$target_file"
+    done
+}
+
 echo "Checking sudo access..."
 sudo -v
 
@@ -118,5 +138,6 @@ elif ! $INSTALL_AUR; then
 fi
 
 copy_configs
+install_pam_files
 
 echo "Done."
