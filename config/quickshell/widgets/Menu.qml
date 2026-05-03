@@ -318,7 +318,7 @@ Item {
                                     anchors { right:parent.right; rightMargin:12; verticalCenter:parent.verticalCenter }
                                     text: root.apps.filter(function(a){ return modelData==="all"||a.cat===modelData }).length.toString().padStart(2,"0")
                                     font.pixelSize:9; font.letterSpacing:1
-                                    color: parent.isActive ? Qt.rgba(214/255,207/255,181/255,0.6) : Qt.rgba(122/255,115/255,88/255,0.5)
+                                    color: parent.isActive ? Qt.rgba(200/255,200/255,200/255,0.6) : Qt.rgba(122/255,122/255,122/255,0.5)
                                 }
                                 MouseArea { id:catMA; anchors.fill:parent; hoverEnabled:true
                                     onClicked: { root.currentCat=modelData; root.focusIdx=0; searchInput.forceActiveFocus() } }
@@ -433,59 +433,82 @@ Item {
                                     x:24; width:parent.width-48; height:1; color:root.lineSoft; opacity:0.5
                                 }
 
-                                Row {
+                                Item {
                                     anchors {
-                                        left:parent.left; right:parent.right; verticalCenter:parent.verticalCenter
-                                        leftMargin:  appMA.containsMouse||appDelegate.isFocused ? 32 : 24
+                                        left: parent.left; right: parent.right; verticalCenter: parent.verticalCenter
+                                        leftMargin: appMA.containsMouse||appDelegate.isFocused ? 32 : 24
                                         rightMargin: 24
                                     }
-                                    spacing:14
                                     Behavior on anchors.leftMargin { NumberAnimation { duration:180; easing.type:Easing.OutQuart } }
 
-                                    Text {
-                                        anchors.verticalCenter:parent.verticalCenter
-                                        text:modelData.id; width:22; font.pixelSize:9; font.letterSpacing:1.5
-                                        color: appMA.containsMouse||appDelegate.isFocused ? Qt.rgba(214/255,207/255,181/255,0.5) : root.inkSoft
-                                        Behavior on color { ColorAnimation { duration:120 } }
-                                    }
-                                    Rectangle {
-                                        anchors.verticalCenter:parent.verticalCenter
-                                        width:28; height:28; color:"transparent"
-                                        border.color: appMA.containsMouse||appDelegate.isFocused ? Qt.rgba(214/255,207/255,181/255,0.8) : root.ink
-                                        border.width:1
-                                        Behavior on border.color { ColorAnimation { duration:120 } }
+                                    Row {
+                                        id: leftRow
+                                        anchors.left: parent.left
+                                        anchors.right: rightRow.left
+                                        anchors.rightMargin: 16
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        spacing: 14
+
                                         Text {
-                                            anchors.centerIn:parent; text:modelData.icon; font.pixelSize:12
-                                            color: appMA.containsMouse||appDelegate.isFocused ? Qt.rgba(214/255,207/255,181/255,0.9) : root.ink
+                                            anchors.verticalCenter:parent.verticalCenter
+                                            text:modelData.id; width:22; font.pixelSize:9; font.letterSpacing:1.5
+                                            color: appMA.containsMouse||appDelegate.isFocused ? Qt.rgba(200/255,200/255,200/255,0.5) : root.inkSoft
                                             Behavior on color { ColorAnimation { duration:120 } }
                                         }
+                                        Rectangle {
+                                            anchors.verticalCenter:parent.verticalCenter
+                                            width:28; height:28; color:"transparent"
+                                            border.color: appMA.containsMouse||appDelegate.isFocused ? Qt.rgba(200/255,200/255,200/255,0.8) : root.ink
+                                            border.width:1
+                                            Behavior on border.color { ColorAnimation { duration:120 } }
+                                            Text {
+                                                anchors.centerIn:parent; text:modelData.icon; font.pixelSize:12
+                                                color: appMA.containsMouse||appDelegate.isFocused ? Qt.rgba(200/255,200/255,200/255,0.9) : root.ink
+                                                Behavior on color { ColorAnimation { duration:120 } }
+                                            }
+                                        }
+                                        Column {
+                                            id: nameColumn
+                                            width: leftRow.width - x
+                                            anchors.verticalCenter:parent.verticalCenter; spacing:2
+                                            Text {
+                                                width: parent.width
+                                                text:modelData.name; font.pixelSize:12; font.letterSpacing:1.2; font.weight:Font.Medium
+                                                elide: Text.ElideRight
+                                                maximumLineCount: 1
+                                                color: appMA.containsMouse||appDelegate.isFocused ? Qt.rgba(200/255,200/255,200/255,1) : root.ink
+                                                Behavior on color { ColorAnimation { duration:120 } }
+                                            }
+                                            Text {
+                                                width: parent.width
+                                                text:modelData.meta; font.pixelSize:9; font.letterSpacing:1.5
+                                                elide: Text.ElideRight
+                                                maximumLineCount: 1
+                                                color: appMA.containsMouse||appDelegate.isFocused ? Qt.rgba(200/255,200/255,200/255,0.5) : root.inkSoft
+                                                Behavior on color { ColorAnimation { duration:120 } }
+                                            }
+                                        }
                                     }
-                                    Column {
-                                        anchors.verticalCenter:parent.verticalCenter; spacing:2
+
+                                    Row {
+                                        id: rightRow
+                                        anchors.right: parent.right
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        spacing: 10
+
                                         Text {
-                                            text:modelData.name; font.pixelSize:12; font.letterSpacing:1.2; font.weight:Font.Medium
-                                            color: appMA.containsMouse||appDelegate.isFocused ? Qt.rgba(214/255,207/255,181/255,1) : root.ink
+                                            anchors.verticalCenter:parent.verticalCenter
+                                            text:(root.catLabels[modelData.cat]||modelData.cat).toUpperCase()
+                                            font.pixelSize:9; font.letterSpacing:2
+                                            color: appMA.containsMouse||appDelegate.isFocused ? Qt.rgba(200/255,200/255,200/255,0.4) : root.inkSoft
                                             Behavior on color { ColorAnimation { duration:120 } }
                                         }
                                         Text {
-                                            text:modelData.meta; font.pixelSize:9; font.letterSpacing:1.5
-                                            color: appMA.containsMouse||appDelegate.isFocused ? Qt.rgba(214/255,207/255,181/255,0.5) : root.inkSoft
-                                            Behavior on color { ColorAnimation { duration:120 } }
+                                            anchors.verticalCenter:parent.verticalCenter
+                                            text:"▸"; font.pixelSize:14; color:root.accent
+                                            opacity: appMA.containsMouse||appDelegate.isFocused ? 1 : 0
+                                            Behavior on opacity { NumberAnimation { duration:120 } }
                                         }
-                                    }
-                                    Item { width:appList.width-310; height:1 }
-                                    Text {
-                                        anchors.verticalCenter:parent.verticalCenter
-                                        text:(root.catLabels[modelData.cat]||modelData.cat).toUpperCase()
-                                        font.pixelSize:9; font.letterSpacing:2
-                                        color: appMA.containsMouse||appDelegate.isFocused ? Qt.rgba(214/255,207/255,181/255,0.4) : root.inkSoft
-                                        Behavior on color { ColorAnimation { duration:120 } }
-                                    }
-                                    Text {
-                                        anchors.verticalCenter:parent.verticalCenter
-                                        text:"▸"; font.pixelSize:14; color:root.accent
-                                        opacity: appMA.containsMouse||appDelegate.isFocused ? 1 : 0
-                                        Behavior on opacity { NumberAnimation { duration:120 } }
                                     }
                                 }
 
