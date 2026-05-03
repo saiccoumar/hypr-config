@@ -176,7 +176,7 @@ Item {
     // ── Overlay ──
     Rectangle {
         anchors.fill: parent
-        color: root.menuOpen ? Qt.rgba(184/255,175/255,147/255,0.55) : "transparent"
+        color: root.menuOpen ? Qt.rgba(120/255,120/255,120/255,0.55) : "transparent"
         visible: true
         Behavior on color { ColorAnimation { duration: 260 } }
         MouseArea {
