@@ -1,18 +1,7 @@
-# Unit-3
-
-Hyprland + Quickshell + Waybar rice for Arch Linux, with a NieR:Automata aesthetic.
+Hyprland + Quickshell + Waybar rice for CachyOS
 
 
-## Support
 
-[![Ko-fi](https://img.shields.io/badge/Ko--fi-FF5E5B?style=for-the-badge&logo=ko-fi&logoColor=white&labelColor=101418)](https://ko-fi.com/samyns)
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black&labelColor=101418)](https://www.buymeacoffee.com/samyns)
-
-A ⭐ on the repo or sharing your own rice in the issues makes me just as happy.
-
-
-# SHOW OFF
-https://github.com/user-attachments/assets/f3366b70-cfa0-46ef-b4f5-e461546364e2
 
 ## Quick install
 
@@ -30,7 +19,6 @@ curl -fsSL https://raw.githubusercontent.com/samyns/Unit-3/main/install.sh | bas
 - **Shell/widgets**: Quickshell with custom QML widgets (menu, lockscreen, wallpaper picker, notifications, player)
 - **Bar**: Waybar
 - **Terminal**: Kitty
-- **Theme**: NieR-inspired with custom video transitions
 
 ## Customization
 
@@ -57,23 +45,3 @@ bind = SUPER, B, exec, firefox
 | `Print` | Screenshot |
 | `ALT SHIFT + S` | Region screenshot |
 
-## Credits
-
-Inspired by [caelestia-dots/shell](https://github.com/caelestia-dots/shell).
-
-Inspired by https://github.com/flickowoa/dotfiles.git 
-## License
-
-MIT
-EOF
-
-## Star History
-
-
-<a href="https://www.star-history.com/?repos=samyns%2FUnit-3&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=samyns/Unit-3&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=samyns/Unit-3&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=samyns/Unit-3&type=date&legend=top-left" />
- </picture>
-</a>
