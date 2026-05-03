@@ -49,16 +49,16 @@ QtObject {
 
     // ── COULEURS GLOBALES ────────────────────────────────────────
 
-    // Palette sépia NieR (ne pas modifier sauf si tu changes de thème)
-    readonly property color fg:   "#c8b89a"      // texte principal
+    // Palette monochrome NieR (ne pas modifier sauf si tu changes de thème)
+    readonly property color fg:   "#c8c8c8"      // texte principal
     readonly property color bg:   "#0b0a09"      // fond principal
-    readonly property color a1:   "#c87060"      // accent rouge
-    readonly property color a2:   "#60a880"      // accent vert
-    readonly property color a3:   "#6090c8"      // accent bleu
-    readonly property color a4:   "#c8a860"      // accent or
-    readonly property color ln:   Qt.rgba(200/255, 184/255, 154/255, 0.12)  // bordure fine
-    readonly property color lnm:  Qt.rgba(200/255, 184/255, 154/255, 0.22) // bordure medium
-    readonly property color curtainColor: "#c8b89a"  // couleur du rideau wipe
+    readonly property color a1:   "#bdbdbd"      // accent 1
+    readonly property color a2:   "#a6a6a6"      // accent 2
+    readonly property color a3:   "#b0b0b0"      // accent 3
+    readonly property color a4:   "#b5b5b5"      // accent 4
+    readonly property color ln:   Qt.rgba(200/255, 200/255, 200/255, 0.12)  // bordure fine
+    readonly property color lnm:  Qt.rgba(200/255, 200/255, 200/255, 0.22) // bordure medium
+    readonly property color curtainColor: "#c8c8c8"  // couleur du rideau wipe
 
 
     // ── ANIMATIONS ──────────────────────────────────────────────

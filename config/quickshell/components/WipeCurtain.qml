@@ -7,7 +7,7 @@ import QtQuick
 Item {
     id: root
 
-    property color curtainColor:   "#c8b89a"
+    property color curtainColor:   "#c8c8c8"
     property int   revealDuration: 650
     property int   hideDuration:   600
 
