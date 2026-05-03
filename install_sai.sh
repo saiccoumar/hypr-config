@@ -8,6 +8,8 @@ INSTALL_AUR=true
 CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 BACKUP_DIR="$HOME/.config-backup-$(date +%Y%m%d-%H%M%S)-$$"
 CONFIG_DIRS=(hypr quickshell waybar kitty dunst)
+PICTURES_DIR="${XDG_PICTURES_DIR:-$HOME/Pictures}"
+WALLPAPER_DIR="$PICTURES_DIR/wallpapers"
 
 for arg in "$@"; do
     case "$arg" in
@@ -71,6 +73,11 @@ copy_configs() {
     find "$CONFIG_HOME/hypr" "$CONFIG_HOME/quickshell" "$CONFIG_HOME/waybar" \
         -type f \( -name '*.sh' -o -name '*.py' \) -exec chmod +x {} + 2>/dev/null || true
 
+    if [[ ! -f "$CONFIG_HOME/hypr/user.conf" ]]; then
+        echo "Creating empty Hyprland user override file..."
+        touch "$CONFIG_HOME/hypr/user.conf"
+    fi
+
     if [[ -d "$BACKUP_DIR" ]]; then
         echo "Old configs were backed up to $BACKUP_DIR"
     fi
@@ -94,6 +101,18 @@ install_pam_files() {
         echo "Installing PAM file: $target_file"
         sudo install -D -m 644 "$source_file" "$target_file"
     done
+}
+
+copy_wallpapers() {
+    local source_dir="$SCRIPT_DIR/assets/wallpapers"
+
+    if [[ ! -d "$source_dir" ]]; then
+        return
+    fi
+
+    mkdir -p "$WALLPAPER_DIR"
+    echo "Copying wallpapers to $WALLPAPER_DIR..."
+    cp -a "$source_dir/." "$WALLPAPER_DIR/"
 }
 
 echo "Checking sudo access..."
@@ -138,6 +157,7 @@ elif ! $INSTALL_AUR; then
 fi
 
 copy_configs
+copy_wallpapers
 install_pam_files
 
 echo "Done."

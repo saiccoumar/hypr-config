@@ -23,6 +23,10 @@ ShellRoot {
     property string wallpaperDir:  xdgPictures + "/wallpapers"
     property string activeMonitor: ""   // nom du monitor actif (où est la souris)
 
+    function shellQuote(value) {
+        return "'" + String(value).replace(/'/g, "'\\''") + "'"
+    }
+
     // ── Détecter le monitor actif ──
     Process {
         id: getMonitorProc
@@ -40,7 +44,7 @@ ShellRoot {
     // ── Lister les wallpapers ──
     Process {
         id: listWallpapers
-        command: ["sh","-c","ls " + root.wallpaperDir + " | grep -iE '\\.(jpg|jpeg|png|webp)$'"]
+        command: ["sh","-c","find " + root.shellQuote(root.wallpaperDir) + " -maxdepth 1 -type f \\( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' -o -iname '*.gif' -o -iname '*.bmp' \\) -printf '%f\\n' | sort"]
         running: true
         stdout: StdioCollector {
             onStreamFinished: {
@@ -55,8 +59,8 @@ ShellRoot {
         if (root.wallpapers.length === 0) return
         var file = root.wallpaperDir + "/" + root.wallpapers[idx]
         var cmd = monitor === "both"
-            ? "awww img " + file
-            : "awww img --outputs " + monitor + " " + file
+            ? "awww img " + root.shellQuote(file)
+            : "awww img --outputs " + root.shellQuote(monitor) + " " + root.shellQuote(file)
         applyProc.command = ["sh","-c", cmd]
         applyProc.running = true
     }
