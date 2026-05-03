@@ -5,12 +5,10 @@ Hyprland + Quickshell + Waybar rice for CachyOS
 
 ## Quick install
 
-```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/samyns/Unit-3/main/install.sh)
 ```
-or
-```
-curl -fsSL https://raw.githubusercontent.com/samyns/Unit-3/main/install.sh | bash
+git clone https://github.com/saiccoumar/hypr-config.git
+chmod +x install_sai.sh
+./install_sai.sh
 ```
 
 ## What's included
