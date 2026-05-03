@@ -133,9 +133,9 @@ Scope {
 
         readonly property int urgency: notification ? notification.urgency : 1
         readonly property color accentColor: {
-            if (urgency === 2) return "#6e2a2a";
-            if (urgency === 0) return "#7a7358";
-            return "#463f2e";
+            if (urgency === 2) return "#6e6e6e";
+            if (urgency === 0) return "#7a7a7a";
+            return "#4a4a4a";
         }
 
         readonly property string urgencyLabel: {
@@ -275,8 +275,8 @@ Scope {
             width: parent.width
             implicitHeight: contentCol.implicitHeight + 12
 
-            color: "#d6cfb5"
-            border.color: "#463f2e"
+            color: "#d0d0d0"
+            border.color: "#4a4a4a"
             border.width: 1
 
             // Bordure gauche colorée
@@ -300,7 +300,7 @@ Scope {
                 gradient: Gradient {
                     orientation: Gradient.Horizontal
                     GradientStop { position: 0.0; color: "transparent" }
-                    GradientStop { position: 0.5; color: "#406e2a2a" }
+                    GradientStop { position: 0.5; color: "#406e6e6e" }
                     GradientStop { position: 1.0; color: "transparent" }
                 }
                 opacity: scanProgress > 0 && scanProgress < 1 ? 1 : 0
@@ -317,7 +317,7 @@ Scope {
                 z: 0
                 onPaint: {
                     const ctx = getContext("2d");
-                    ctx.strokeStyle = "rgba(70, 63, 46, 0.25)";
+                    ctx.strokeStyle = "rgba(70, 70, 70, 0.25)";
                     ctx.lineWidth = 1;
                     for (let x = 0; x < width; x += 16) {
                         ctx.beginPath();
@@ -356,7 +356,7 @@ Scope {
                             id: urgLabel
                             anchors.centerIn: parent
                             text: notif.urgencyLabel
-                            color: "#d6cfb5"
+                            color: "#d0d0d0"
                             font.family: "JetBrains Mono"
                             font.pixelSize: 8
                             font.weight: Font.Medium
@@ -366,7 +366,7 @@ Scope {
 
                     Text {
                         text: notif.urgencyJp
-                        color: "#7a7358"
+                        color: "#7a7a7a"
                         font.family: "Noto Sans JP"
                         font.pixelSize: 9
                     }
@@ -376,7 +376,7 @@ Scope {
                         text: notif.notification
                               ? (notif.notification.appName || "SYSTEM").toUpperCase()
                               : "SYSTEM"
-                        color: "#7a7358"
+                        color: "#7a7a7a"
                         font.family: "JetBrains Mono"
                         font.pixelSize: 8
                         font.letterSpacing: 2
@@ -389,7 +389,7 @@ Scope {
                             const p = n => String(n).padStart(2, '0');
                             return `${p(d.getHours())}:${p(d.getMinutes())}`;
                         }
-                        color: "#7a7358"
+                        color: "#7a7a7a"
                         font.family: "JetBrains Mono"
                         font.pixelSize: 8
                         font.letterSpacing: 1
@@ -399,7 +399,7 @@ Scope {
                         Layout.preferredWidth: 16
                         Layout.preferredHeight: 14
                         color: closeMouse.containsMouse ? notif.accentColor : "transparent"
-                        border.color: "#463f2e"
+                        border.color: "#4a4a4a"
                         border.width: 1
 
                         Behavior on color { ColorAnimation { duration: 120 } }
@@ -407,7 +407,7 @@ Scope {
                         Text {
                             anchors.centerIn: parent
                             text: "✕"
-                            color: closeMouse.containsMouse ? "#d6cfb5" : "#463f2e"
+                            color: closeMouse.containsMouse ? "#d0d0d0" : "#4a4a4a"
                             font.family: "JetBrains Mono"
                             font.pixelSize: 9
                             Behavior on color { ColorAnimation { duration: 120 } }
@@ -426,7 +426,7 @@ Scope {
                 Rectangle {
                     Layout.fillWidth: true
                     Layout.preferredHeight: 1
-                    color: "#463f2e"
+                    color: "#4a4a4a"
                     opacity: 0.2
                 }
 
@@ -465,7 +465,7 @@ Scope {
                         Rectangle {
                             anchors.fill: parent
                             color: "transparent"
-                            border.color: "#463f2e"
+                            border.color: "#4a4a4a"
                             border.width: 1
                         }
 
@@ -481,7 +481,7 @@ Scope {
                             Text {
                                 anchors.centerIn: parent
                                 text: String(notif.itemIndex + 1).padStart(2, '0')
-                                color: "#d6cfb5"
+                                color: "#d0d0d0"
                                 font.family: "JetBrains Mono"
                                 font.pixelSize: 7
                                 font.letterSpacing: 0.5
@@ -535,7 +535,7 @@ Scope {
                         Text {
                             Layout.fillWidth: true
                             text: notif.notification ? notif.notification.summary : ""
-                            color: "#2e2a1f"
+                            color: "#2f2f2f"
                             font.family: "Inter"
                             font.pixelSize: 13
                             font.weight: Font.Medium
@@ -549,7 +549,7 @@ Scope {
                         Text {
                             Layout.fillWidth: true
                             text: notif.notification ? notif.notification.body : ""
-                            color: "#463f2e"
+                            color: "#4a4a4a"
                             font.family: "Inter"
                             font.pixelSize: 11
                             font.weight: Font.Light
@@ -580,8 +580,8 @@ Scope {
 
                             Layout.preferredHeight: 22
                             Layout.preferredWidth: actionText.implicitWidth + 16
-                            color: actMouse.containsMouse ? "#463f2e" : "transparent"
-                            border.color: "#463f2e"
+                            color: actMouse.containsMouse ? "#4a4a4a" : "transparent"
+                            border.color: "#4a4a4a"
                             border.width: 1
 
                             Behavior on color { ColorAnimation { duration: 120 } }
@@ -590,7 +590,7 @@ Scope {
                                 id: actionText
                                 anchors.centerIn: parent
                                 text: `▸ ${(modelData && modelData.text ? modelData.text : "").toUpperCase()}`
-                                color: actMouse.containsMouse ? "#d6cfb5" : "#463f2e"
+                                color: actMouse.containsMouse ? "#d0d0d0" : "#4a4a4a"
                                 font.family: "JetBrains Mono"
                                 font.pixelSize: 9
                                 font.letterSpacing: 1.5

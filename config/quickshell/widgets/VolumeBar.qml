@@ -31,8 +31,8 @@ ShellRoot {
     readonly property int segActiveW: 22
     readonly property int segActiveH: 5
 
-    readonly property color colFilled: "#a89a7e"
-    readonly property color colEmpty:  "#c8b89a"
+    readonly property color colFilled: "#b5b5b5"
+    readonly property color colEmpty:  "#c8c8c8"
     readonly property color colBg:     "#0f0d0a"
 
     // ── État volume ──
@@ -194,7 +194,7 @@ ShellRoot {
                                       :                 root.segEmptyH
                                 radius: parent.filled ? 1 : 0
                                 color: parent.filled
-                                       ? (root.muted ? "#6e2a2a" : root.colFilled)
+                                       ? (root.muted ? "#6e6e6e" : root.colFilled)
                                        : root.colEmpty
 
                                 Behavior on width   { NumberAnimation { duration: 260; easing.type: Easing.OutCubic } }

@@ -21,13 +21,13 @@ Item {
     implicitHeight: screenH
 
     // Palette
-    readonly property color paper:     "#d6cfb5"
-    readonly property color ink:       "#463f2e"
-    readonly property color inkStrong: "#2e2a1f"
-    readonly property color inkSoft:   "#7a7358"
-    readonly property color lineSoft:  Qt.rgba(70/255,63/255,46/255,0.25)
-    readonly property color lineVsoft: Qt.rgba(70/255,63/255,46/255,0.12)
-    readonly property color accent:    "#6e2a2a"
+    readonly property color paper:     "#d0d0d0"
+    readonly property color ink:       "#4a4a4a"
+    readonly property color inkStrong: "#2f2f2f"
+    readonly property color inkSoft:   "#7a7a7a"
+    readonly property color lineSoft:  Qt.rgba(70/255,70/255,70/255,0.25)
+    readonly property color lineVsoft: Qt.rgba(70/255,70/255,70/255,0.12)
+    readonly property color accent:    "#6e6e6e"
 
     // Apps
     property var  apps: []
@@ -568,7 +568,7 @@ Item {
         Rectangle {
             id:wipeCurtain
             anchors{top:parent.top;bottom:parent.bottom}
-            color:"#c8b89a"; z:50; width:2; x:root.lw-2
+            color:"#c8c8c8"; z:50; width:2; x:root.lw-2
         }
     }
 

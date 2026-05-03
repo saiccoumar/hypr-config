@@ -653,7 +653,7 @@ Item {
         Rectangle {
             id:    curtain
             anchors { top: parent.top; bottom: parent.bottom }
-            color: "#c8b89a"
+            color: "#c8c8c8"
             z:     10
 
             // État initial : caché (width=2, à droite)
