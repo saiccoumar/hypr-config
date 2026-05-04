@@ -275,8 +275,8 @@ Scope {
             width: parent.width
             implicitHeight: contentCol.implicitHeight + 12
 
-            color: "#d0d0d0"
-            border.color: "#4a4a4a"
+            color: "#141414"
+            border.color: "#a0a0a0"
             border.width: 1
 
             // Bordure gauche colorée
@@ -356,7 +356,7 @@ Scope {
                             id: urgLabel
                             anchors.centerIn: parent
                             text: notif.urgencyLabel
-                            color: "#d0d0d0"
+                            color: "#141414"
                             font.family: "JetBrains Mono"
                             font.pixelSize: 8
                             font.weight: Font.Medium
@@ -366,7 +366,7 @@ Scope {
 
                     Text {
                         text: notif.urgencyJp
-                        color: "#7a7a7a"
+                        color: "#a0a0a0"
                         font.family: "Noto Sans JP"
                         font.pixelSize: 9
                     }
@@ -376,7 +376,7 @@ Scope {
                         text: notif.notification
                               ? (notif.notification.appName || "SYSTEM").toUpperCase()
                               : "SYSTEM"
-                        color: "#7a7a7a"
+                        color: "#a0a0a0"
                         font.family: "JetBrains Mono"
                         font.pixelSize: 8
                         font.letterSpacing: 2
@@ -389,7 +389,7 @@ Scope {
                             const p = n => String(n).padStart(2, '0');
                             return `${p(d.getHours())}:${p(d.getMinutes())}`;
                         }
-                        color: "#7a7a7a"
+                        color: "#a0a0a0"
                         font.family: "JetBrains Mono"
                         font.pixelSize: 8
                         font.letterSpacing: 1
@@ -399,7 +399,7 @@ Scope {
                         Layout.preferredWidth: 16
                         Layout.preferredHeight: 14
                         color: closeMouse.containsMouse ? notif.accentColor : "transparent"
-                        border.color: "#4a4a4a"
+                        border.color: "#a0a0a0"
                         border.width: 1
 
                         Behavior on color { ColorAnimation { duration: 120 } }
@@ -407,7 +407,7 @@ Scope {
                         Text {
                             anchors.centerIn: parent
                             text: "✕"
-                            color: closeMouse.containsMouse ? "#d0d0d0" : "#4a4a4a"
+                            color: closeMouse.containsMouse ? "#141414" : "#d0d0d0"
                             font.family: "JetBrains Mono"
                             font.pixelSize: 9
                             Behavior on color { ColorAnimation { duration: 120 } }
@@ -426,7 +426,7 @@ Scope {
                 Rectangle {
                     Layout.fillWidth: true
                     Layout.preferredHeight: 1
-                    color: "#4a4a4a"
+                    color: "#a0a0a0"
                     opacity: 0.2
                 }
 
@@ -465,7 +465,7 @@ Scope {
                         Rectangle {
                             anchors.fill: parent
                             color: "transparent"
-                            border.color: "#4a4a4a"
+                            border.color: "#a0a0a0"
                             border.width: 1
                         }
 
@@ -481,7 +481,7 @@ Scope {
                             Text {
                                 anchors.centerIn: parent
                                 text: String(notif.itemIndex + 1).padStart(2, '0')
-                                color: "#d0d0d0"
+                                color: "#141414"
                                 font.family: "JetBrains Mono"
                                 font.pixelSize: 7
                                 font.letterSpacing: 0.5
@@ -535,7 +535,7 @@ Scope {
                         Text {
                             Layout.fillWidth: true
                             text: notif.notification ? notif.notification.summary : ""
-                            color: "#2f2f2f"
+                            color: "#d0d0d0"
                             font.family: "Inter"
                             font.pixelSize: 13
                             font.weight: Font.Medium
@@ -549,7 +549,7 @@ Scope {
                         Text {
                             Layout.fillWidth: true
                             text: notif.notification ? notif.notification.body : ""
-                            color: "#4a4a4a"
+                            color: "#a0a0a0"
                             font.family: "Inter"
                             font.pixelSize: 11
                             font.weight: Font.Light
@@ -581,7 +581,7 @@ Scope {
                             Layout.preferredHeight: 22
                             Layout.preferredWidth: actionText.implicitWidth + 16
                             color: actMouse.containsMouse ? "#4a4a4a" : "transparent"
-                            border.color: "#4a4a4a"
+                            border.color: "#a0a0a0"
                             border.width: 1
 
                             Behavior on color { ColorAnimation { duration: 120 } }
@@ -590,7 +590,7 @@ Scope {
                                 id: actionText
                                 anchors.centerIn: parent
                                 text: `▸ ${(modelData && modelData.text ? modelData.text : "").toUpperCase()}`
-                                color: actMouse.containsMouse ? "#d0d0d0" : "#4a4a4a"
+                                color: actMouse.containsMouse ? "#141414" : "#d0d0d0"
                                 font.family: "JetBrains Mono"
                                 font.pixelSize: 9
                                 font.letterSpacing: 1.5

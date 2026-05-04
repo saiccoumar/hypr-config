@@ -11,6 +11,14 @@
 
 set -e
 
+# ── Parse arguments ──
+FORCE=0
+for arg in "$@"; do
+    if [[ "$arg" == "--force" || "$arg" == "-f" ]]; then
+        FORCE=1
+    fi
+done
+
 # ── Paths génériques (respecte XDG) ──
 CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
@@ -53,34 +61,46 @@ if (( ${#missing_scripts[@]} > 0 )); then
     exit 1
 fi
 
-# ── Génération (force) reveal ──
-echo "↻ génération wave_reveal.mp4…"
-python "$REVEAL_SCRIPT" -o "$REVEAL_VIDEO"
-if [[ -f "$REVEAL_VIDEO" ]]; then
-    echo "✓ wave_reveal.mp4 généré"
+# ── Génération reveal ──
+if [[ -f "$REVEAL_VIDEO" ]] && [[ $FORCE -eq 0 ]]; then
+    echo "✓ wave_reveal.mp4 existe déjà"
 else
-    echo "❌ échec génération wave_reveal.mp4"
-    exit 2
+    echo "↻ génération wave_reveal.mp4…"
+    python "$REVEAL_SCRIPT" -o "$REVEAL_VIDEO"
+    if [[ -f "$REVEAL_VIDEO" ]]; then
+        echo "✓ wave_reveal.mp4 généré"
+    else
+        echo "❌ échec génération wave_reveal.mp4"
+        exit 2
+    fi
 fi
 
-# ── Génération (force) hide ──
-echo "↻ génération wave_hide.mp4…"
-python "$HIDE_SCRIPT" -o "$HIDE_VIDEO"
-if [[ -f "$HIDE_VIDEO" ]]; then
-    echo "✓ wave_hide.mp4 généré"
+# ── Génération hide ──
+if [[ -f "$HIDE_VIDEO" ]] && [[ $FORCE -eq 0 ]]; then
+    echo "✓ wave_hide.mp4 existe déjà"
 else
-    echo "❌ échec génération wave_hide.mp4"
-    exit 3
+    echo "↻ génération wave_hide.mp4…"
+    python "$HIDE_SCRIPT" -o "$HIDE_VIDEO"
+    if [[ -f "$HIDE_VIDEO" ]]; then
+        echo "✓ wave_hide.mp4 généré"
+    else
+        echo "❌ échec génération wave_hide.mp4"
+        exit 3
+    fi
 fi
 
-# ── Génération (force) last frame ──
-echo "↻ génération wave_last_frame.png…"
-python "$LAST_FRAME_SCRIPT" "$REVEAL_VIDEO"
-if [[ -f "$LAST_FRAME" ]]; then
-    echo "✓ wave_last_frame.png généré"
+# ── Génération last frame ──
+if [[ -f "$LAST_FRAME" ]] && [[ $FORCE -eq 0 ]]; then
+    echo "✓ wave_last_frame.png existe déjà"
 else
-    echo "❌ échec génération wave_last_frame.png"
-    exit 4
+    echo "↻ génération wave_last_frame.png…"
+    python "$LAST_FRAME_SCRIPT" "$REVEAL_VIDEO"
+    if [[ -f "$LAST_FRAME" ]]; then
+        echo "✓ wave_last_frame.png généré"
+    else
+        echo "❌ échec génération wave_last_frame.png"
+        exit 4
+    fi
 fi
 
 echo "═══════════════════════════════════════════════════════════"

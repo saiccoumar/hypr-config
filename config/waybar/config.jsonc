@@ -11,14 +11,59 @@
     "custom/ticker"
   ],
   "modules-right": [
-    "custom/pomodoro",
-    "cpu",
+    "battery",
+    "group/hardware",
     "memory",
     "network",
     "pulseaudio",
     "clock",
     "custom/power"
   ],
+
+  "group/hardware": {
+    "orientation": "horizontal",
+    "drawer": {
+        "transition-duration": 500,
+        "children-class": "not-memory",
+        "transition-left-to-right": false
+    },
+    "modules": [
+        "cpu",
+        "power-profiles-daemon",
+        "backlight",
+        "backlight#keyboard"
+    ]
+  },
+
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "SCR {percent}%",
+    "on-scroll-up": "brightnessctl set +5%",
+    "on-scroll-down": "brightnessctl set 5%-",
+    "on-click": "brightnessctl set +5%",
+    "on-click-right": "brightnessctl set 5%-"
+  },
+
+  "backlight#keyboard": {
+    "device": "tpacpi::kbd_backlight",
+    "format": "KBD {percent}%",
+    "on-scroll-up": "brightnessctl -d 'tpacpi::kbd_backlight' set +1",
+    "on-scroll-down": "brightnessctl -d 'tpacpi::kbd_backlight' set 1-",
+    "on-click": "brightnessctl -d 'tpacpi::kbd_backlight' set +1",
+    "on-click-right": "brightnessctl -d 'tpacpi::kbd_backlight' set 1-"
+  },
 
   "hyprland/workspaces": {
     "format": "{id}",
@@ -28,6 +73,16 @@
   "hyprland/window": {
     "format": "// {title}",
     "max-length": 40
+  },
+
+  "battery": {
+    "format": "BAT {capacity}% {time}",
+    "format-charging": "CHG {capacity}% {time}",
+    "format-plugged": "PLG {capacity}% {time}",
+    "states": {
+        "warning": 30,
+        "critical": 15
+    }
   },
 
   "cpu": {
@@ -60,7 +115,7 @@
   },
 
   "custom/ticker": {
-    "exec": "echo '接続中 // SCANNING // データ処理 // SYS:ACTIVE // NR-2B@ARCH // 全システム正常 // 起動完了 //'",
+    "exec": "echo '// SCANNING // SYS:ACTIVE // THEBES //'",
     "interval": 60,
     "format": "{}"
   },

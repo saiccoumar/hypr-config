@@ -47,7 +47,10 @@ window#waybar {
 }
 
 /* MODULES DROITE */
+#battery,
 #cpu,
+#power-profiles-daemon,
+#backlight,
 #memory,
 #network,
 #pulseaudio,
