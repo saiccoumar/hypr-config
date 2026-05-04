@@ -196,7 +196,7 @@ ShellRoot {
                             Text{text:"SESSION LOCKED";font.family:"Share Tech Mono";font.pixelSize:9;font.letterSpacing:2;color:"#4a4a4a"}
                         }
                         Text{text:"NODE · "+root.currentUser+"@arch";font.family:"Share Tech Mono";font.pixelSize:9;font.letterSpacing:2;color:"#4a4a4a"}
-                        Text{text:"セッションロック中";font.family:"Noto Sans JP";font.pixelSize:8;color:"#4a4a4a";opacity:0.7}
+                        Text{text:"SESSION LOCKED";font.family:"Noto Sans JP";font.pixelSize:8;color:"#4a4a4a";opacity:0.7}
                     }
                 }
                 Item {
@@ -324,7 +324,7 @@ ShellRoot {
                             }
                             Text{text:root.currentUser.toUpperCase();font.family:"Share Tech Mono";font.pixelSize:13;font.letterSpacing:3;color:"#4a4a4a";anchors.horizontalCenter:parent.horizontalCenter}
                             Item{width:1;height:4}
-                            Text{text:"ユニット · アクティブ";font.family:"Noto Sans JP";font.pixelSize:8;color:"#7a7a7a";anchors.horizontalCenter:parent.horizontalCenter}
+                            Text{text:"VERSION · 1.0.0";font.family:"Noto Sans JP";font.pixelSize:8;color:"#7a7a7a";anchors.horizontalCenter:parent.horizontalCenter}
                             Item{width:1;height:20}
                             Text{text:root.clockStr;font.family:"Share Tech Mono";font.pixelSize:46;font.letterSpacing:2;color:"#4a4a4a";anchors.horizontalCenter:parent.horizontalCenter}
                             Item{width:1;height:6}

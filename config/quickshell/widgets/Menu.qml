@@ -248,7 +248,7 @@ Item {
                         spacing:14; anchors.verticalCenter:parent.verticalCenter
                         Text { text:"SYSTEM"; font.pixelSize:11; font.letterSpacing:3.5; font.weight:Font.Medium; color:root.inkStrong }
                         Rectangle { width:24; height:1; color:root.inkSoft; anchors.verticalCenter:parent.verticalCenter }
-                        Text { text:"システム"; font.pixelSize:10; font.letterSpacing:2; color:root.inkSoft }
+                        Text { text:"MENU"; font.pixelSize:10; font.letterSpacing:2; color:root.inkSoft }
                     }
                     Item { width:parent.width - 340; height:1 }
                     Row {

@@ -115,7 +115,7 @@
   },
 
   "custom/ticker": {
-    "exec": "echo '// SCANNING // SYS:ACTIVE // THEBES //'",
+    "exec": "echo '// SCANNING // SYS:ACTIVE // '$HOSTNAME' //' | tr '[:lower:]' '[:upper:]'",
     "interval": 60,
     "format": "{}"
   },
