@@ -31,7 +31,7 @@
         "cpu",
         "power-profiles-daemon",
         "backlight",
-        "backlight#keyboard"
+        "custom/keyboard-backlight"
     ]
   },
 
@@ -56,9 +56,10 @@
     "on-click-right": "brightnessctl set 5%-"
   },
 
-  "backlight#keyboard": {
-    "device": "tpacpi::kbd_backlight",
-    "format": "KBD {percent}%",
+  "custom/keyboard-backlight": {
+    "exec": "brightnessctl -d 'tpacpi::kbd_backlight' i | grep -oP '\\(\\K[0-9]+(?=%\\))'",
+    "format": "KBD {}%",
+    "interval": 1,
     "on-scroll-up": "brightnessctl -d 'tpacpi::kbd_backlight' set +1",
     "on-scroll-down": "brightnessctl -d 'tpacpi::kbd_backlight' set 1-",
     "on-click": "brightnessctl -d 'tpacpi::kbd_backlight' set +1",

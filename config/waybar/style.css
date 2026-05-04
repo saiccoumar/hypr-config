@@ -51,6 +51,7 @@ window#waybar {
 #cpu,
 #power-profiles-daemon,
 #backlight,
+#custom-keyboard-backlight,
 #memory,
 #network,
 #pulseaudio,
